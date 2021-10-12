@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
-// import Test from "./components/Test/Test";
+import Test from "./components/Test/Test";
 import { useState } from "react";
 
 function App() {
@@ -277,9 +277,9 @@ function App() {
   return (
     <div className="App">
       <h1>
-        <Header />
-        <Products productList={productList} />
-        {/* <Test /> */}
+        {/* <Header /> */}
+        {/* <Products productList={productList} /> */}
+        <Test />
       </h1>
     </div>
   );
