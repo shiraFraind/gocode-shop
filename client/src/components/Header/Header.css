@@ -1,3 +1,11 @@
+h1 {
+  font-size: 28px;
+  font-weight: 300;
+  flex: 1;
+}
+
+/* Product Layout- header */
+
 .product-filter {
   display: flex;
   padding: 30px 0;
@@ -12,6 +20,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .collection-sort:first-child {
   padding-right: 20px;
 }
@@ -22,4 +31,18 @@ label {
   font-weight: 500;
   line-height: 2em;
   text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .product-filter {
+    flex-direction: column;
+  }
+
+  .sort {
+    align-self: flex-start;
+  }
 }
