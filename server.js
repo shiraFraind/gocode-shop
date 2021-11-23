@@ -1,14 +1,14 @@
-require("dotenv").config();
+const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
+const port = process.env.PORT || 5000;
+
+require("dotenv").config();
+
 const app = express();
-const port = process.env.port || 8000;
 app.use(express.json());
 app.use(express.static("client/build"));
 
-app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
-});
 const productSchema = new mongoose.Schema({
   title: String,
   price: Number,
@@ -19,6 +19,7 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 //get products
 app.get("/api/products", (req, res) => {
+  console.log("/api/products");
   const { title } = req.query;
   Product.find((err, products) => {
     if (title) {
@@ -71,14 +72,25 @@ app.delete("/api/product/:id", (req, res) => {
     res.send(product);
   });
 });
-console.log(process.env.DB_USER);
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
+
+const URL = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
+
+console.log("URL", URL);
+
 mongoose.connect(
-  `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+  // mongodb+srv://hadasa9096:<password>@cluster0.totmk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+  // "mongodb://localhost/gocode_shop",
+  URL,
+
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
+    console.log("err", err);
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      console.log(`Example app listening on port ${port}!`);
     });
   }
 );
