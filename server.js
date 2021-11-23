@@ -89,8 +89,6 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("err", err);
-    app.listen(port, () => {
-      console.log(`Example app listening on port ${port}!`);
-    });
+    app.listen(port, () => {});
   }
 );
