@@ -15,8 +15,6 @@ function Header({ Categories, filterProducts, filterPrices }) {
   };
   return (
     <nav class="product-filter">
-      <h3>products</h3>
-
       <div class="sort">
         <div class="collection-sort">
           <NativeSelectDemoSort />
