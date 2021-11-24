@@ -1,7 +1,7 @@
 const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 require("dotenv").config();
 
@@ -89,6 +89,8 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("err", err);
-    app.listen(port, () => {});
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}!`);
+    });
   }
 );
