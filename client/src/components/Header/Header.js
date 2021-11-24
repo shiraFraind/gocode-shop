@@ -24,7 +24,6 @@ function Header({ Categories, filterProducts, filterPrices }) {
       </div>
       <div className="collection-sort">
         <div class="collection-sort">
-          <label>Filter by:</label>
           <NativeSelectDemoFilter
             filterProducts={filterProducts}
             Categories={Categories}
