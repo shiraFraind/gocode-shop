@@ -1,7 +1,7 @@
 const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 
 require("dotenv").config();
 
