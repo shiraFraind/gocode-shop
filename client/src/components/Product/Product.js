@@ -68,7 +68,7 @@ function Product({ id, title, price, description, category, image }) {
           <h6>{`$ ${price}`}</h6>
         </div>
       </Link>
-      <h5>{description}</h5>
+      {/* <h5>{description}</h5> */}
       <div>
         <Button
           varient="contained"

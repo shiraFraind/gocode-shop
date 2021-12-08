@@ -80,10 +80,20 @@ const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 const URL = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
 console.log("URL", URL);
+const initProducts = () => {
+  Product.findOne((err, product) => {
+    if (!product) {
+      fs.readFile("./products.json", "utf-8", (err, data) => {
+        const products = JSON.parse(data);
+        Product.insertMany(products, (err, productRes) => {
+          res.send(productRes);
+        });
+      });
+    }
+  });
+};
 
 mongoose.connect(
-  // mongodb+srv://hadasa9096:<password>@cluster0.totmk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-  // "mongodb://localhost/gocode_shop",
   URL,
 
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -91,6 +101,7 @@ mongoose.connect(
     console.log("err", err);
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}!`);
+      initProducts();
     });
   }
 );
