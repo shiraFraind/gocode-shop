@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import MyContext from "../../MyContext";
 import Button from "@mui/material/Button";
-
+import { CardGroup } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import "./Product.css";
 import { Link } from "react-router-dom";
 function Product({ id, title, price, description, category, image }) {
@@ -57,38 +58,38 @@ function Product({ id, title, price, description, category, image }) {
     setProductsInCart(newProductsList);
   };
   return (
-    <div className="product-card ">
-      <Link to={`/product/${id}`}>
-        <div className="product-image">
-          <img alt="" src={image} />
+    <Card>
+      <div className="product-card ">
+        <Link to={`/product/${id}`}>
+          <Card.Img variant="top" src={image} />
+          <Card.Body>
+            <Card.Title>{title}</Card.Title>
+            <h6>{`$ ${price}`}</h6>
+            <Card.Text>{description}</Card.Text>
+          </Card.Body>
+        </Link>
+        {/* <h5></h5> */}
+        <div>
+          <Button
+            varient="contained"
+            onClick={() => {
+              AddingProduct();
+            }}
+          >
+            +
+          </Button>
+          <span>{getAmount()}</span>
+          <Button
+            varient="contained"
+            onClick={() => {
+              ProductRemoval();
+            }}
+          >
+            -
+          </Button>
         </div>
-        <div className="product-info">
-          <h5>{title}</h5>
-
-          <h6>{`$ ${price}`}</h6>
-        </div>
-      </Link>
-      {/* <h5>{description}</h5> */}
-      <div>
-        <Button
-          varient="contained"
-          onClick={() => {
-            AddingProduct();
-          }}
-        >
-          +
-        </Button>
-        <span>{getAmount()}</span>
-        <Button
-          varient="contained"
-          onClick={() => {
-            ProductRemoval();
-          }}
-        >
-          -
-        </Button>
       </div>
-    </div>
+    </Card>
   );
 }
 export default Product;
