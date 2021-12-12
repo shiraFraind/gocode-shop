@@ -61,7 +61,9 @@ function Product({ id, title, price, description, category, image }) {
     <Card>
       <div className="product-card ">
         <Link to={`/product/${id}`}>
-          <Card.Img variant="top" src={image} />
+          <div className="product-image">
+            <Card.Img variant="top" src={image} />
+          </div>
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <h6>{`$ ${price}`}</h6>
