@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./views/Home";
 import ProductsView from "./views/ProductsView";
 import ProductView from "./views/ProductView";
+
 function App() {
   const [productsInCart, setProductsInCart] = useState([]);
   return (

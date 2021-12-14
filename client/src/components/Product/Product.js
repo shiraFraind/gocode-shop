@@ -1,9 +1,13 @@
 import { useContext } from "react";
 import MyContext from "../../MyContext";
 import Button from "@mui/material/Button";
-
+import IconButton from "@mui/material/IconButton";
 import "./Product.css";
 import { Link } from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import Box from "@mui/material/Box";
 function Product({ id, title, price, description, category, image }) {
   const [productsInCart, setProductsInCart] = useContext(MyContext);
 
