@@ -3,6 +3,8 @@ import Products from "../components/Products/Products";
 import Cart from "../components/Cart/Cart";
 import { useState, useEffect } from "react";
 import TemporaryDrawer from "../components/TemporaryDrawer/TemporaryDrawer";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Fab } from "@mui/material";
 
 function ProductsView() {
   const [categoriesList, setCategoriesList] = useState([]);
@@ -57,7 +59,6 @@ function ProductsView() {
         filterPrices={filterByPrice}
       />
       <TemporaryDrawer />
-
       <hr />
       <Products products={productsList} />
     </div>

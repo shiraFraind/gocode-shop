@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import MyContext from "../../MyContext";
 import Button from "@mui/material/Button";
-import { CardGroup } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import IconButton from "@mui/material/IconButton";
 import "./Product.css";
 import { Link } from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import Box from "@mui/material/Box";
 function Product({ id, title, price, description, category, image }) {
   const [productsInCart, setProductsInCart] = useContext(MyContext);
 
@@ -58,40 +61,69 @@ function Product({ id, title, price, description, category, image }) {
     setProductsInCart(newProductsList);
   };
   return (
-    <Card>
-      <div className="product-card ">
-        <Link to={`/product/${id}`}>
-          <div className="product-image">
-            <Card.Img variant="top" src={image} />
-          </div>
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <h6>{`$ ${price}`}</h6>
-            <Card.Text>{description}</Card.Text>
-          </Card.Body>
-        </Link>
-        {/* <h5></h5> */}
-        <div>
-          <Button
-            varient="contained"
-            onClick={() => {
-              AddingProduct();
-            }}
-          >
-            +
-          </Button>
-          <span>{getAmount()}</span>
-          <Button
-            varient="contained"
-            onClick={() => {
-              ProductRemoval();
-            }}
-          >
-            -
-          </Button>
+    <div className="product-card ">
+      <Link to={`/product/${id}`}>
+        <div className="product-image">
+          <img alt="" src={image} />
         </div>
+        <div className="product-info">
+          <h5>{title}</h5>
+
+          <h6>{`$ ${price}`}</h6>
+        </div>
+      </Link>
+      <h5>{description}</h5>
+      <div>
+        <Button
+          varient="contained"
+          onClick={() => {
+            AddingProduct();
+          }}
+        >
+          +
+        </Button>
+        <span>{getAmount()}</span>
+        <Button
+          varient="contained"
+          onClick={() => {
+            ProductRemoval();
+          }}
+        >
+          -
+        </Button>
       </div>
-    </Card>
+    </div>
   );
 }
 export default Product;
+// import "./Product.css";
+// import
+// function Product({ image, id, title, price, description, category }) {
+//   const [productsInCart, setProductsInCart] = useContext(MyContext);
+//     const getAmount = () => {
+//         let findProduct = productsInCart.find((product) => product.id === id)
+//         if(findProduct) return findProduct.amount;
+//         return ''
+//     }
+//   return (
+//     <div className="product-card">
+//       <div className="product-image">
+//         <img src={image} alt={title} />
+//       </div>
+//       <div className="product-info">
+//         {id}
+//         <br />
+//         {title}
+//         <br />
+//         {price}
+//         <br />
+
+//         {description}
+//         <br />
+//         {category}
+//         <br />
+//       </div>
+//     </div>
+//   );
+// }
+// export default Product;

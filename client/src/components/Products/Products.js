@@ -1,6 +1,6 @@
 import Product from "../Product/Product";
 import "./Products.css";
-function Products({ products }) {
+function Products({ products, totalPayment }) {
   return (
     <section className="products">
       {products.map((pro) => (

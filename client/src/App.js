@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import React from "react";
 import MyContext from "./MyContext";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./views/Home";
 import ProductsView from "./views/ProductsView";
 import ProductView from "./views/ProductView";
+
 function App() {
   const [productsInCart, setProductsInCart] = useState([]);
   return (
