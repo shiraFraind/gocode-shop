@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./views/Home";
 import ProductsView from "./views/ProductsView";
 import ProductView from "./views/ProductView";
+import Auth from "./views/Auth/Auth";
 
 function App() {
   const [productsInCart, setProductsInCart] = useState([]);
@@ -22,11 +23,17 @@ function App() {
               <li>
                 <Link to="/productsView">Products</Link>
               </li>
+              <li>
+                <Link to="/Auth">Register/Login</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
             <Route path="/productsView">
               <ProductsView />
+            </Route>
+            <Route path="/Auth">
+              <Auth />
             </Route>
             <Route path="/productView/:id">
               <ProductView />
